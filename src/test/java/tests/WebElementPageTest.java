@@ -48,7 +48,7 @@ public class WebElementPageTest extends BaseTest {
                 .verifyAddFormLabelsLastName()
                 .verifyTextArea("Last Name")
                 .verifyAddFormLabelsEmail()
-                .verifyTextArea("Email")
+                .verifyTextArea("name@example.com")
                 .verifyAddFormLabelsAge()
                 .verifyTextArea("Age")
                 .verifyAddFormLabelsSalary()
