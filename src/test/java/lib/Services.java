@@ -50,7 +50,7 @@ public class Services {
     }
 
 
-    protected void type(String type,String locator, String text) {
+    protected void typeData(String type,String locator, String text) {
         driver.findElement(this.findElementByType(type,locator)).sendKeys(text);
     }
 

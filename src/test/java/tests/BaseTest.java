@@ -15,7 +15,7 @@ public class BaseTest {
     private static final String URL = "https://demoqa.com/";
 
     public WebDriver driver = null;
-    private static final long IMPLICIT_TIME = 5;
+    private static final long IMPLICIT_TIME = 20;
     private Log logger= new Log();
     public HomePage homepage;
     public ElementsPage elementspage;

@@ -15,6 +15,8 @@ public class WebElementPage extends Services {
     private String xpathPopUpLabels="//div[@class='modal-content']//label";
     private String xpathTextAreasBase="//div[@class='modal-content']//input";
     private String xpathSubmitButton="//*[@id='submit']";
+    private String xpathTableValueBase="//*[@id='app']//div[@class='rt-tr-group']//div";
+    private String xpathTableHeadingBase ="//*[@id='app']//div[@class='rt-tr']//div[text()='First Name']";
 
     public WebElementPage(WebDriver driver) {
         super(driver);
@@ -107,9 +109,31 @@ public class WebElementPage extends Services {
     @Step("Verify Text area for label {0}")
     public WebElementPage verifyTextArea(String label)
     {   String path=xpathTextAreasBase+"[@placeholder='"+label+"']";
-        assertElementVisible("xpath",xpathSubmitButton,true);
+        assertElementVisible("xpath",path,true);
         return this;
     }
+
+    @Step("Enter text to {0}")
+    public WebElementPage SetValueTextArea(String label,String data)
+    {   String path=xpathTextAreasBase+"[@placeholder='"+label+"']";
+        typeData("xpath",path,data);
+        return this;
+    }
+
+    @Step("Submit form")
+    public WebElementPage submitForm()
+    {   click("xpath",xpathSubmitButton);
+        return this;
+    }
+
+    @Step("Verify value {0} is present")
+    public WebElementPage verifyTableValuePresent(String data)
+    {   String path=xpathTableValueBase+"[text()='"+data+"']";
+        assertElementVisible("xpath",path,true);
+        return this;
+    }
+
+
 
 
 

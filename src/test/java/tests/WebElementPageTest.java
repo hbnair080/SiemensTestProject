@@ -1,5 +1,6 @@
 package tests;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import utils.Listeners.TestListener;
@@ -46,6 +47,8 @@ public class WebElementPageTest extends BaseTest {
                 .verifyTextArea("First Name")
                 .verifyAddFormLabelsLastName()
                 .verifyTextArea("Last Name")
+                .verifyAddFormLabelsEmail()
+                .verifyTextArea("Email")
                 .verifyAddFormLabelsAge()
                 .verifyTextArea("Age")
                 .verifyAddFormLabelsSalary()
@@ -54,6 +57,49 @@ public class WebElementPageTest extends BaseTest {
                 .verifyTextArea("Department");
     }
 
+    @Test(dataProvider = "validForm")
+    public void verifyValidFormSubmit(String firstName,String lastName, String emailID, String age, String salary, String dept ) {
+        elementspage
+                .clickOnWebElementMenu()
+                .verifyAddButtonPresent()
+                .clickAdd()
+                .SetValueTextArea("First Name",firstName)
+                .SetValueTextArea("Last Name",lastName)
+                .SetValueTextArea("name@example.com",emailID)
+                .SetValueTextArea("Age",age)
+                .SetValueTextArea("Salary",salary)
+                .SetValueTextArea("Department",dept)
+                .submitForm();
+
+    }
+
+
+    @Test(dataProvider = "validForm")
+    public void verifyDataAfterSubmit(String firstName,String lastName, String emailID, String age, String salary, String dept ) {
+        elementspage
+                .clickOnWebElementMenu()
+                .verifyAddButtonPresent()
+                .clickAdd()
+                .SetValueTextArea("First Name",firstName)
+                .SetValueTextArea("Last Name",lastName)
+                .SetValueTextArea("name@example.com",emailID)
+                .SetValueTextArea("Age",age)
+                .SetValueTextArea("Salary",salary)
+                .SetValueTextArea("Department",dept)
+                .submitForm()
+                .verifyTableValuePresent(firstName)
+                .verifyTableValuePresent(lastName)
+                .verifyTableValuePresent(emailID)
+                .verifyTableValuePresent(age)
+                .verifyTableValuePresent(salary)
+                .verifyTableValuePresent(dept);
+
+    }
+
+    @DataProvider
+    public static Object[][] validForm() {
+        return new Object[][]{{"Hrishikesh", "B","hbnair080@gmail.com","27","200000","CSE"},{"Heera", "B","heera@gmail.com","22","200000","Engneering"}};
+    }
 
 
 
