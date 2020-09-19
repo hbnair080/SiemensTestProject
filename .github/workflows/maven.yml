@@ -23,9 +23,9 @@ jobs:
     - name: Run File
       run: mvn clean test --file pom.xml
     - name: Upload a Build Artifact
+      if: ${{ always() }}
       uses: actions/upload-artifact@v2.1.4
       with:
-        if: ${{ always() }}
         name: Test Result
         path: ./ExtentReports/*.html
 
