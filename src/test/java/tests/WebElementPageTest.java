@@ -1,10 +1,13 @@
 package tests;
 
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import utils.Listeners.TestListener;
 
+@Listeners({ TestListener.class })
 public class WebElementPageTest extends BaseTest {
 
-
+    @Test
     public void testWebElementPageTitle()
     {
         elementspage
@@ -12,6 +15,7 @@ public class WebElementPageTest extends BaseTest {
                 .verifyTitle();
     }
 
+    @Test
     public void verifyAddButton(){
         elementspage
                     .clickOnWebElementMenu()
@@ -20,7 +24,7 @@ public class WebElementPageTest extends BaseTest {
                     .verifyAddPopUpdDisplayed();
     }
 
-
+    @Test
     public void verifyPopUp(){
         elementspage
                 .clickOnWebElementMenu()
