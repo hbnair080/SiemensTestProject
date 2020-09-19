@@ -3,6 +3,7 @@ package utils.Listeners;
 import com.relevantcodes.extentreports.LogStatus;
 import io.qameta.allure.Attachment;
 import lib.DriverFactory;
+import lib.Services;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -71,10 +72,10 @@ public class TestListener extends BaseTest implements ITestListener {
 
         //Get driver from BaseTest and assign to local webdriver variable.
         Object testClass = iTestResult.getInstance();
-        WebDriver driver = ((DriverFactory) testClass).getDriver();
+        WebDriver driver = Services.giveDriver();
 
         //Allure ScreenShotRobot and SaveTestLog
-        if (driver instanceof WebDriver) {
+        if (driver != null) {
             System.out.println("Screenshot captured for test case:" + getTestMethodName(iTestResult));
             saveScreenshotPNG(driver);
         }

@@ -1,4 +1,5 @@
 package lib;
+import com.relevantcodes.extentreports.ExtentReports;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -11,12 +12,14 @@ public class DriverFactory {
 
     public WebDriver getDriver() {
         String browser = System.getProperty("browser");
+        String workingDir = System.getProperty("user.dir");
+        String path = workingDir+"/src/resources";
         if (browser == null)
             browser = "chrome";
         log.info("WebDriver instance for browser: " + browser);
 
         if (browser.equalsIgnoreCase("chrome")) {
-            System.setProperty("webdriver.chrome.driver", "C:/Users/hbnai/Desktop/siemenstestproject/src/resources/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", path+"/chromedriver.exe");
             return new ChromeDriver();
         }
         else if (browser.equalsIgnoreCase("ie"))

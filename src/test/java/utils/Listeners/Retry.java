@@ -2,6 +2,7 @@ package utils.Listeners;
 
 import com.relevantcodes.extentreports.LogStatus;
 import lib.DriverFactory;
+import lib.Services;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +14,7 @@ import utils.ExtentReports.ExtentTestManager;
 public class Retry implements IRetryAnalyzer {
 
     private int count = 0;
-    private static int maxTry = 2; //Run the failed test 2 times
+    private static int maxTry = 0; //Run the failed test 2 times
 
     @Override
     public boolean retry(ITestResult iTestResult) {
@@ -32,7 +33,7 @@ public class Retry implements IRetryAnalyzer {
 
     public void extendReportsFailOperations (ITestResult iTestResult) {
         Object testClass = iTestResult.getInstance();
-        WebDriver webDriver = ((DriverFactory) testClass).getDriver();
+        WebDriver webDriver = Services.giveDriver();;
         String base64Screenshot = "data:image/png;base64,"+((TakesScreenshot)webDriver).getScreenshotAs(OutputType.BASE64);
         ExtentTestManager.getTest().log(LogStatus.FAIL,"Test Failed",
                 ExtentTestManager.getTest().addBase64ScreenShot(base64Screenshot));
