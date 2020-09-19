@@ -26,5 +26,5 @@ jobs:
       uses: actions/upload-artifact@v2.1.4
       with:
         name: Test Result
-        path: path/ExtentReports/*.html 
+        path: ./ExtentReports/*.html 
 
