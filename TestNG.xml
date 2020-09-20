@@ -21,4 +21,9 @@
             <class name="tests.WebElementPageTest"/>
         </classes>
     </test>
+    <test name="FramesTest">
+        <classes>
+            <class name="tests.FramesPageTest"/>
+        </classes>
+    </test>
 </suite>
