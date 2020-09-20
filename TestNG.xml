@@ -31,4 +31,9 @@
             <class name="tests.BrowserTest"/>
         </classes>
     </test>
+    <test name="AlertPageTest">
+        <classes>
+            <class name="tests.AlertPageTest"/>
+        </classes>
+    </test>
 </suite>

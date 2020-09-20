@@ -52,6 +52,30 @@ public class Services {
         new WebDriverWait(driver, 20).until(ExpectedConditions.presenceOfAllElementsLocatedBy(this.findElementByType(type,locator)));
     }
 
+    public Alert waitForAlert() {
+       return new WebDriverWait(driver, 20).until(ExpectedConditions.alertIsPresent());
+    }
+
+    public void waitForAlertAndDismiss() {
+       Alert a=this.waitForAlert();
+       a.dismiss();
+    }
+
+    public void waitForAlertAndAccept() {
+        Alert a=this.waitForAlert();
+        a.accept();
+    }
+
+    public String alertText() {
+        Alert a=this.waitForAlert();
+        return a.getText();
+    }
+
+    public void alertSendKey(String text) {
+        Alert a=this.waitForAlert();
+         a.sendKeys(text);
+    }
+
 
     public void click(String type,String locator) {
         driver.findElement(this.findElementByType(type,locator)).click();

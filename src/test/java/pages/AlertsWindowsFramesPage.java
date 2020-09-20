@@ -9,7 +9,8 @@ public class AlertsWindowsFramesPage extends Services {
 
     private Log logger= new Log();
     private String xpathFramesMenu ="//span[text()=\"Nested Frames\"]";
-    private String xpathBrowserdMenu ="//span[text()=\"Browser Windows\"]";
+    private String xpathBrowserMenu ="//span[text()=\"Browser Windows\"]";
+    private String xpathAltersMenu ="//span[text()=\"Alerts\"]";
 
     public AlertsWindowsFramesPage(WebDriver driver) {
         super(driver);
@@ -26,9 +27,18 @@ public class AlertsWindowsFramesPage extends Services {
     @Step("Click on Browser menu item")
     public BrowserPage clickOnBrowserMenu() throws InterruptedException {
         logger.info("Click on download menu item");
-        scrollElementIntoView("xpath",xpathBrowserdMenu);
+        scrollElementIntoView("xpath", xpathBrowserMenu);
         Thread.sleep(1000);
-        click("xpath",xpathBrowserdMenu);
+        click("xpath", xpathBrowserMenu);
         return new BrowserPage(driver);
     }
+
+    @Step("Click on Alert menu item")
+    public AlertsPage clickOnAlertMenu()  {
+        logger.info("Click on Alert menu item");
+        scrollElementIntoView("xpath", xpathAltersMenu);
+        click("xpath", xpathAltersMenu);
+        return new AlertsPage(driver);
+    }
+
 }
