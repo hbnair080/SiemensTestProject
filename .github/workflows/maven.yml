@@ -38,7 +38,7 @@ jobs:
       if: ${{ always() }}
       uses: actions/upload-artifact@v2.1.4
       with:
-        name: Test Result-Allure
+        name: Test Result-Extended
         path: ./ExtentReports/*.html
 
 

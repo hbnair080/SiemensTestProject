@@ -2,7 +2,6 @@ package utils.Listeners;
 
 import com.relevantcodes.extentreports.LogStatus;
 import io.qameta.allure.Attachment;
-import lib.DriverFactory;
 import lib.Services;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;

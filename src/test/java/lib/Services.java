@@ -1,15 +1,15 @@
 package lib;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import utils.Log;
 
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
-
-import static org.testng.Assert.*;
 
 public class Services {
 
@@ -74,12 +74,12 @@ public class Services {
 
     protected void assertElementPresent(String type,String locator) {
         log.info("# Verifying element.");
-        assertTrue(isElementPresent(type,locator), "Element " + locator + " not found.");
+        Assert.assertTrue(isElementPresent(type,locator), "Element " + locator + " not found.");
     }
 
     protected void assertElementNotPresent(String type, String locator) {
         log.info("# Verifying element.");
-        assertFalse(isElementPresent(type,locator), "Element " + locator + " is found.");
+        Assert.assertFalse(isElementPresent(type,locator), "Element " + locator + " is found.");
     }
 
     protected boolean isElementPresent(String type,String locator) {
@@ -102,13 +102,13 @@ public class Services {
     protected void assertElementVisible(String type,String locator, boolean isVisible) {
         log.info("# Verifying element visibility.");
         if (isVisible)
-            assertTrue(isElementVisible(type,locator), "Element " + locator + " should be visible.");
+            Assert.assertTrue(isElementVisible(type,locator), "Element " + locator + " should be visible.");
         else
-            assertFalse(isElementVisible(type,locator), "Element " + locator + " should not be visible.");
+            Assert.assertFalse(isElementVisible(type,locator), "Element " + locator + " should not be visible.");
     }
 
     protected void simpleAssertTrue(boolean value,String message) {
-            assertTrue(value, message);
+            Assert.assertTrue(value, message);
     }
 
 
@@ -155,25 +155,25 @@ public class Services {
     protected void assertText(String type,String locator, String expectedText) {
         log.info("Asserting Text");
         String actualText=text(type,locator).trim();
-        assertEquals(expectedText,actualText,"Expected string "+expectedText+"does not match actual string "+actualText );
+        Assert.assertEquals(expectedText,actualText,"Expected string "+expectedText+"does not match actual string "+actualText );
     }
 
     protected void simpleAssertEquals(String actualText, String expectedText) {
         log.info("Asserting Equlas");
-        assertEquals(expectedText,actualText,"Expected string "+expectedText+"does not match actual string "+actualText );
+        Assert.assertEquals(expectedText,actualText,"Expected string "+expectedText+"does not match actual string "+actualText );
     }
 
     protected void assertCSSProperty(String type,String locator,String property,String expectedText) {
         log.info("Asserting css property");
         String actualText=getCSSValues(type,locator,property);
         log.info("Css property "+property+" is: "+actualText);
-        assertEquals(expectedText,actualText,"Expected string "+expectedText+"does not match actual string "+actualText );
+        Assert.assertEquals(expectedText,actualText,"Expected string "+expectedText+"does not match actual string "+actualText );
     }
 
     protected void assertAttributePorperty(String type,String locator,String property,String expectedText) {
         log.info("Asserting css property");
         String actualText=getAttributeProperty(type,locator,property);
-        assertEquals(expectedText,actualText,"Expected string "+expectedText+"does not match actual string "+actualText );
+        Assert.assertEquals(expectedText,actualText,"Expected string "+expectedText+"does not match actual string "+actualText );
     }
 
     protected void waitByPolling(Function f)
