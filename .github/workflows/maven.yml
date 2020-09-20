@@ -22,12 +22,12 @@ jobs:
         java-version: 1.8
     - name: Run File
       run: mvn clean test --file pom.xml
-    - name: Inatllaluure command line
+    - name: Inatll allure command line
       if: ${{ always() }}
       run: npm install -g allure-commandline --save-dev
-    - name: Create Aluure Report
+    - name: Create Allure Report
       if: ${{ always() }}
-      run: allure generate -c ./allure-results -o ./allure-results-html
+      run: allure generate -c ./allure-results -o ./allure-reports
     - name: Upload Test Result
       if: ${{ always() }}
       uses: actions/upload-artifact@v2.1.4
