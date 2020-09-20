@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 public class FramesPageTest extends BaseTest {
 
-
+    @Test
     public void verifyParentFrameText() throws InterruptedException {
         homepage
                 .clickOnAlertsCard()

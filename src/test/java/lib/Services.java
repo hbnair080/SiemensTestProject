@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import utils.Log;
 
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
@@ -128,13 +129,41 @@ public class Services {
         return driver.findElement(By.xpath(xpath));
     }
 
-
+    protected String getPageTitle()
+    {
+        return driver.getTitle();
+    }
 
     protected void scrollElementIntoView(String type, String locator)
     {
         WebElement element= driver.findElement(this.findElementByType(type,locator));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
     }
+
+    protected void switchTab() {
+        log.info("Switching tab");
+        driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "\t");
+
+    }
+
+    protected void switchWindow() {
+        log.info("Switching winows");
+        String title;
+        String winHandleBefore = driver.getWindowHandle();
+        Set<String> all = driver.getWindowHandles();
+        System.out.println(all.size());
+        for(String winHandle : all)
+        {   if(!winHandle.equals(winHandleBefore))
+            driver.switchTo().window(winHandle);
+        }
+
+    }
+
+    protected void closePresentTab()
+    {
+        driver.close();
+    }
+
 
     protected void jsClick(String type, String locator)
     {

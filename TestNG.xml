@@ -26,4 +26,9 @@
             <class name="tests.FramesPageTest"/>
         </classes>
     </test>
+    <test name="BrowserTest">
+        <classes>
+            <class name="tests.BrowserTest"/>
+        </classes>
+    </test>
 </suite>

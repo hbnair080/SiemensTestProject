@@ -24,11 +24,11 @@ public class AlertsWindowsFramesPage extends Services {
     }
 
     @Step("Click on Browser menu item")
-    public UploadDownloadPage clickOnBrowserMenu() throws InterruptedException {
+    public BrowserPage clickOnBrowserMenu() throws InterruptedException {
         logger.info("Click on download menu item");
         scrollElementIntoView("xpath",xpathBrowserdMenu);
         Thread.sleep(1000);
         click("xpath",xpathBrowserdMenu);
-        return new UploadDownloadPage(driver);
+        return new BrowserPage(driver);
     }
 }
