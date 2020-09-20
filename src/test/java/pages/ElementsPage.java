@@ -17,12 +17,15 @@ public class ElementsPage extends Services {
 
     @Step("Click on  WebElement menu item")
     public WebElementPage clickOnWebElementMenu(){
+        logger.info("Click on  WebElement menu item");
         scrollElementIntoView("xpath",xpathWebElementMenu);
         click("xpath",xpathWebElementMenu);
         return new WebElementPage(driver);
     }
 
+    @Step("Click on download menu item")
     public UploadDownloadPage clickOnUploadDownloadMenu() throws InterruptedException {
+        logger.info("Click on download menu item");
         scrollElementIntoView("xpath",xpathUploadDownloadMenu);
         Thread.sleep(1000);
         click("xpath",xpathUploadDownloadMenu);

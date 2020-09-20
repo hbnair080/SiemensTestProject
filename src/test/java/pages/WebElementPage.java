@@ -32,39 +32,41 @@ public class WebElementPage extends Services {
     @Step("Verify Add button is visible")
     public WebElementPage verifyAddButtonPresent()
     {
+        logger.info("Verify Add button is visible");
         assertElementVisible("xpath",xpathAddButton,true);
         return this;
     }
 
     @Step("Click on add")
     public WebElementPage clickAdd()
-    {
+    {   logger.info("Click on add");
         click("xpath",xpathAddButton);
         return this;
     }
 
     @Step("Verify pop up dispalyed")
     public WebElementPage verifyAddPopUpdDisplayed()
-    {
+    {   logger.info("Verify pop up dispalyed");
         isElementPresent("xpath",xpathAddPopUp);
         return this;
     }
 
     @Step("Verify heading in pop up")
     public WebElementPage verifyAddPopUpHeading()
-    {
+    {   logger.info("Verify heading in pop up");
         assertText("xpath",xpathAddPopHeading,"Registration Form");
         return this;
     }
 
     @Step("Verify First name Label")
     public WebElementPage verifyAddFormLabelsFirstName()
-    {   String path=xpathPopUpLabels+"[text()='First Name']";
+    {   logger.info("Verify First name Label");
+        String path=xpathPopUpLabels+"[text()='First Name']";
         assertElementVisible("xpath",path,true);
         return this;
     }
 
-    @Step("Verify First name Label")
+    @Step("Verify Last name Label")
     public WebElementPage verifyAddFormLabelsLastName()
     {   String path=xpathPopUpLabels+"[text()='Last Name']";
         assertElementVisible("xpath",path,true);
@@ -132,14 +134,6 @@ public class WebElementPage extends Services {
         assertElementVisible("xpath",path,true);
         return this;
     }
-
-
-
-
-
-
-
-
 
 
 }

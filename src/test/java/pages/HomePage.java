@@ -32,13 +32,14 @@ public class HomePage extends Services {
     @Step("Verify Element card is loaded")
     public HomePage verifyElementLoad() {
         waitForElement("xpath",xpathCatogryCardElement);
-        logger.info("Home Page Loaded");
+        logger.info("Verify Element card is loaded");
         return this;
     }
 
     @Step("Click on  element card")
     public ElementsPage clickOnElementCard(){
         scrollElementIntoView("xpath",xpathCatogryCardElement);
+        logger.info("Click on  element card ");
         click("xpath",xpathCatogryCardElement);
         return new ElementsPage(this.driver);
     }
@@ -46,6 +47,7 @@ public class HomePage extends Services {
     @Step("Click on  widgets card")
     public WidgetsPage clickOnWidgetsCard(){
         scrollElementIntoView("xpath",xpathCatogryCardElement);
+        logger.info("Click on  widgets card ");
         click("xpath",xpathCatogryCardElement);
         return new WidgetsPage(this.driver);
     }
