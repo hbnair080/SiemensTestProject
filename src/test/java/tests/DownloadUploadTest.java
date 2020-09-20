@@ -21,6 +21,7 @@ public class DownloadUploadTest extends BaseTest {
         homepage
                 .clickOnElementCard()
                 .clickOnUploadDownloadMenu()
+                .verifyDownloadButtonPresent()
                 .clickOnSelect()
                 .sendKeysToUploadPopUP("UploadTest.txt")
                 .clickOpenInUploadPopUP()

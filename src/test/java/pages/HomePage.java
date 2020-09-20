@@ -38,6 +38,7 @@ public class HomePage extends Services {
 
     @Step("Click on  element card")
     public ElementsPage clickOnElementCard(){
+        scrollElementIntoView("xpath",xpathCatogryCardElement);
         click("xpath",xpathCatogryCardElement);
         return new ElementsPage(this.driver);
     }
