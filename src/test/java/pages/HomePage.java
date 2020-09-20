@@ -43,6 +43,13 @@ public class HomePage extends Services {
         return new ElementsPage(this.driver);
     }
 
+    @Step("Click on  widgets card")
+    public ElementsPage clickOnWidgetsCard(){
+        scrollElementIntoView("xpath",xpathCatogryCardElement);
+        click("xpath",xpathCatogryCardElement);
+        return new ElementsPage(this.driver);
+    }
+
 
 
 
