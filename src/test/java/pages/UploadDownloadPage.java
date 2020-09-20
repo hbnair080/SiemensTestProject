@@ -99,6 +99,7 @@ public class UploadDownloadPage extends Services {
         String workingDir = System.getProperty("user.dir");
         String currentPath = Paths.get(workingDir).toAbsolutePath().toString();
         String downloadFilepath =currentPath+"\\src\\main\\resources\\download";
+        System.out.println(downloadFilepath);
         filefunctions.isFileDownloaded(downloadFilepath,filename);
         return this;
     }

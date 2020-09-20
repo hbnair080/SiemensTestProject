@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 public class ProgressBarPageTest extends BaseTest {
 
-
+    @Test
     public void verifyProgressBarPage() throws InterruptedException {
         homepage
                 .clickOnWidgetsCard()
@@ -15,7 +15,7 @@ public class ProgressBarPageTest extends BaseTest {
 
     }
 
-
+    @Test
     public void verifyProgressBarBeforeStart() throws InterruptedException {
         homepage
                 .clickOnWidgetsCard()
@@ -27,6 +27,7 @@ public class ProgressBarPageTest extends BaseTest {
 
     }
 
+    @Test
     public void verifyProgressBarAfterStart() throws InterruptedException {
         homepage
                 .clickOnWidgetsCard()
@@ -39,6 +40,7 @@ public class ProgressBarPageTest extends BaseTest {
 
     }
 
+    @Test
     public void verifyProgressBarAfterFinish() throws InterruptedException {
         homepage
                 .clickOnWidgetsCard()
@@ -54,7 +56,7 @@ public class ProgressBarPageTest extends BaseTest {
 
     }
 
-
+    @Test
     public void verifyProgressBarAfterReset() throws InterruptedException {
         homepage
                 .clickOnWidgetsCard()
