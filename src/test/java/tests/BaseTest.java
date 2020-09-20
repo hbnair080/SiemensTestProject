@@ -6,7 +6,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import lib.DriverFactory;
 import pages.ElementsPage;
-import pages.HomePage;
+import pages.HomePages;
 import pages.WebElementPage;
 import utils.Log;
 
@@ -19,28 +19,23 @@ public class BaseTest {
     public WebDriver driver = null;
     private static final long IMPLICIT_TIME = 30;
     private Log logger= new Log();
-    public HomePage homepage;
+    public HomePages homepage;
     public ElementsPage elementspage;
     public WebElementPage webelementpage;
 
 
-    @BeforeClass(alwaysRun = true)
-    public void intialize()
-    {
-        logger.info("Intialize");
-        DriverFactory d= new DriverFactory();
-        driver = d.getDriver();
-        homepage= new HomePage(driver);
-        elementspage= new ElementsPage(driver);
-        webelementpage= new WebElementPage(driver);
-
-    }
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
         logger.info("Setup");
-        driver.get(URL);
+        DriverFactory d= new DriverFactory();
+        driver = d.getDriver();
+        logger.info("Intialize");
+        homepage= new HomePages(driver);
+        elementspage= new ElementsPage(driver);
+        webelementpage= new WebElementPage(driver);
         driver.manage().timeouts().implicitlyWait(IMPLICIT_TIME, SECONDS);
         driver.manage().window().maximize();
+        driver.get(URL);
         homepage
                 .verifyHomePageLoad()
                 .verifyElementLoad();
@@ -48,7 +43,7 @@ public class BaseTest {
     }
 
 
-    @AfterClass(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void teardown() {
         logger.info("Teardown.");
         if (driver != null)

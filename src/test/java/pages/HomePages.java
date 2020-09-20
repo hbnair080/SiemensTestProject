@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import utils.Log;
 
 
-public class HomePage extends Services {
+public class HomePages extends Services {
 
     private Log logger= new Log();
     private String xpathBannerHeaderImage ="//*[@id='app']/header//img";
@@ -18,12 +18,12 @@ public class HomePage extends Services {
     private String xpathCatogryCardWideget="//*[@id='app']//div[@class='category-cards']//div[@class='card mt-4 top-card'][4]";
     private String xpathCatogryCardAlerts="//*[@id='app']//div[@class='category-cards']//div[@class='card mt-4 top-card'][3]";
 
-    public HomePage(WebDriver driver) {
+    public HomePages(WebDriver driver) {
         super(driver);
     }
 
     @Step("Verify Home page is loaded")
-    public HomePage verifyHomePageLoad() {
+    public HomePages verifyHomePageLoad() {
         waitForElement("xpath",xpathBannerHeaderImage);
         waitForElement("xpath",xpathBannerImage);
         logger.info("Home Page Loaded");
@@ -31,7 +31,7 @@ public class HomePage extends Services {
     }
 
     @Step("Verify Element card is loaded")
-    public HomePage verifyElementLoad() {
+    public HomePages verifyElementLoad() {
         waitForElement("xpath",xpathCatogryCardElement);
         logger.info("Verify Element card is loaded");
         return this;

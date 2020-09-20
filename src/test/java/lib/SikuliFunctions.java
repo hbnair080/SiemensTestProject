@@ -36,6 +36,12 @@ public class SikuliFunctions {
         s.find(pattern);
     }
 
+    public void findImageSimilar(String image, double si) throws FindFailed {
+        String path= imagePath()+"/"+image;
+        Pattern pattern = new Pattern(path);
+        s.find(pattern.similar(si));
+    }
+
     public void clickButton(String image) throws FindFailed {
         String path= imagePath()+"/"+image;
         Pattern pattern = new Pattern(path);
