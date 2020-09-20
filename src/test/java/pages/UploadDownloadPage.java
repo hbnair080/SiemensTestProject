@@ -100,7 +100,8 @@ public class UploadDownloadPage extends Services {
         String currentPath = Paths.get(workingDir).toAbsolutePath().toString();
         String downloadFilepath =currentPath+"\\src\\main\\resources\\download";
         System.out.println(downloadFilepath);
-        filefunctions.isFileDownloaded(downloadFilepath,filename);
+        boolean value=filefunctions.isFileDownloaded(downloadFilepath,filename);
+        simpleAssertTrue(value,"File is not downloaded");
         return this;
     }
 

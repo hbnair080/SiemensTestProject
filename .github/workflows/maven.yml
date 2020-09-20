@@ -28,11 +28,17 @@ jobs:
     - name: Create Allure Report
       if: ${{ always() }}
       run: allure generate -c ./allure-results -o ./allure-reports
-    - name: Upload Test Result
+    - name: Upload Allure Test Result
       if: ${{ always() }}
       uses: actions/upload-artifact@v2.1.4
       with:
-        name: Test Result
+        name: Test Result-Allure
         path: ./allure-reports
+    - name: Upload Extened Test Result
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2.1.4
+      with:
+        name: Test Result-Allure
+        path: ./ExtentReports/*.html
 
 

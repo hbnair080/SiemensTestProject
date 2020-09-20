@@ -107,6 +107,10 @@ public class Services {
             assertFalse(isElementVisible(type,locator), "Element " + locator + " should not be visible.");
     }
 
+    protected void simpleAssertTrue(boolean value,String message) {
+            assertTrue(value, message);
+    }
+
 
     protected void waitForElementVisible(String type,String locator) {
         new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(this.findElementByType(type,locator)));

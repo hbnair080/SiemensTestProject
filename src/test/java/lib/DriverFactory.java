@@ -35,7 +35,7 @@ public class DriverFactory {
             cap.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
             cap.setCapability(ChromeOptions.CAPABILITY, options);
             System.setProperty("webdriver.chrome.driver", path+"/chromedriver.exe");
-            return new ChromeDriver();
+            return new ChromeDriver(cap);
         }
         else if (browser.equalsIgnoreCase("ie"))
             return new InternetExplorerDriver();
