@@ -37,8 +37,9 @@ public class HomePage extends Services {
     }
 
     @Step("Click on  element card")
-    public void clickOnElementCard(){
+    public ElementsPage clickOnElementCard(){
         click("xpath",xpathCatogryCardElement);
+        return new ElementsPage(this.driver);
     }
 
 

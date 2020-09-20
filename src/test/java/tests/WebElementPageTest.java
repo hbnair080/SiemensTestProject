@@ -11,14 +11,16 @@ public class WebElementPageTest extends BaseTest {
     @Test
     public void testWebElementPageTitle()
     {
-        elementspage
+        homepage
+                .clickOnElementCard()
                 .clickOnWebElementMenu()
                 .verifyTitle();
     }
 
     @Test
     public void verifyAddButton(){
-        elementspage
+        homepage
+                    .clickOnElementCard()
                     .clickOnWebElementMenu()
                     .verifyAddButtonPresent()
                     .clickAdd()
@@ -27,7 +29,8 @@ public class WebElementPageTest extends BaseTest {
 
     @Test
     public void verifyPopUp(){
-        elementspage
+        homepage
+                .clickOnElementCard()
                 .clickOnWebElementMenu()
                 .verifyAddButtonPresent()
                 .clickAdd()
@@ -37,7 +40,8 @@ public class WebElementPageTest extends BaseTest {
 
     @Test
     public void verifyPopUpElements(){
-        elementspage
+        homepage
+                .clickOnElementCard()
                 .clickOnWebElementMenu()
                 .verifyAddButtonPresent()
                 .clickAdd()
@@ -59,7 +63,8 @@ public class WebElementPageTest extends BaseTest {
 
     @Test(dataProvider = "validForm")
     public void verifyValidFormSubmit(String firstName,String lastName, String emailID, String age, String salary, String dept ) {
-        elementspage
+        homepage
+                .clickOnElementCard()
                 .clickOnWebElementMenu()
                 .verifyAddButtonPresent()
                 .clickAdd()
@@ -76,7 +81,8 @@ public class WebElementPageTest extends BaseTest {
 
     @Test(dataProvider = "validForm")
     public void verifyDataAfterSubmit(String firstName,String lastName, String emailID, String age, String salary, String dept ) {
-        elementspage
+        homepage
+                .clickOnElementCard()
                 .clickOnWebElementMenu()
                 .verifyAddButtonPresent()
                 .clickAdd()

@@ -9,6 +9,7 @@ public class ElementsPage extends Services {
 
     private Log logger= new Log();
     private String xpathWebElementMenu ="//span[text()=\"Web Tables\"]";
+    private String xpathUploadDownloadMenu ="//span[text()=\"Upload and Download\"]";
 
     public ElementsPage(WebDriver driver) {
         super(driver);
@@ -20,4 +21,12 @@ public class ElementsPage extends Services {
         click("xpath",xpathWebElementMenu);
         return new WebElementPage(driver);
     }
+
+    public UploadDownloadPage clickOnUploadDownloadMenu(){
+        scrollElementIntoView("xpath",xpathWebElementMenu);
+        click("xpath",xpathUploadDownloadMenu);
+        return new UploadDownloadPage(driver);
+    }
+
+
 }

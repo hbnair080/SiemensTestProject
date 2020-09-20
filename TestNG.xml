@@ -8,7 +8,7 @@
 
     <test name="ElementPageTest">
         <classes>
-            <class name="tests.WebElementPageTest"/>
+            <class name="tests.DownloadUploadTest"/>
         </classes>
     </test>
 </suite>

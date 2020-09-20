@@ -10,15 +10,23 @@ import static org.testng.Assert.*;
 
 public class Services {
 
+
     private Log log= new Log();
     public static WebDriver driver;
+    public SikuliFunctions s= SikuliFunctions.getInstance();
+    public FileFunctions filefunctions= new FileFunctions();
+
+
     public Services(WebDriver driver) {
         this.driver = driver;
     }
+
     public static WebDriver giveDriver()
     {
         return driver;
     }
+
+
     public By findElementByType(String type,String locator) {
         By element = null;
         if (type.equalsIgnoreCase("xpath")) {
@@ -120,5 +128,11 @@ public class Services {
     {
         WebElement element= driver.findElement(this.findElementByType(type,locator));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+    }
+
+    protected void jsClick(String type, String locator)
+    {
+        WebElement element= driver.findElement(this.findElementByType(type,locator));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
     }
 }
