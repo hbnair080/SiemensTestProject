@@ -13,17 +13,13 @@ public class WidgetsPage extends Services {
         super(driver);
     }
 
-    public WebElementPage clickOnProgressBarMenu(){
+    @Step("Click on menu item")
+    public ProgressBarPage clickOnProgressBarMenu(){
+        logger.info("Scroll progress bar menu into view");
         scrollElementIntoView("xpath",xpathProgressBarMenu);
-        click("xpath",xpathProgressBarMenu);
-        return new WebElementPage(driver);
+        logger.info("Click on menu item");
+        jsClick("xpath",xpathProgressBarMenu);
+        return new ProgressBarPage(driver);
     }
 
-
-    @Step("Verify heading in Progress bar page")
-    public WidgetsPage verifyAddPopUpHeading()
-    {   logger.info("Verify heading in Progress bar page");
-        assertText("xpath",xpathProgressBarMenu,"Registration Form");
-        return this;
-    }
 }

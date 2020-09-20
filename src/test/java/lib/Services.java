@@ -1,9 +1,12 @@
 package lib;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.Log;
 
+import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
 import static org.testng.Assert.*;
@@ -104,18 +107,17 @@ public class Services {
             assertFalse(isElementVisible(type,locator), "Element " + locator + " should not be visible.");
     }
 
-    protected void assertText(String type,String locator, String expectedText) {
-        log.info("Asserting Text");
-        String actualText=text(type,locator);
-        assertEquals(expectedText,actualText,"Expected string "+expectedText+"does not match actual string "+actualText );
+
+    protected void waitForElementVisible(String type,String locator) {
+        new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(this.findElementByType(type,locator)));
     }
 
-    protected void waitForElementVisible(String locator) {
-        new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
+    protected void waitForElementInVisible(String type,String locator) {
+        new WebDriverWait(driver, 30).until(ExpectedConditions.invisibilityOfElementLocated(this.findElementByType(type,locator)));
     }
 
-    protected void waitForElementInVisible(String locator) {
-        new WebDriverWait(driver, 20).until(ExpectedConditions.invisibilityOfElementLocated(By.xpath(locator)));
+    protected void waitForAttributeContains(String type,String locator, String attribute, String value) {
+        new WebDriverWait(driver, 30).until(ExpectedConditions.attributeContains(this.findElementByType(type,locator),attribute,value));
     }
 
     protected WebElement getWebElement(String xpath) {
@@ -135,4 +137,50 @@ public class Services {
         WebElement element= driver.findElement(this.findElementByType(type,locator));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
     }
+
+    protected String getCSSValues(String type, String locator, String property)
+    {   WebElement element= driver.findElement(this.findElementByType(type,locator));
+        return element.getCssValue(property);
+    }
+
+    protected String getAttributeProperty(String type, String locator, String attribute)
+    {   WebElement element= driver.findElement(this.findElementByType(type,locator));
+        return element.getAttribute(attribute);
+    }
+
+    protected void assertText(String type,String locator, String expectedText) {
+        log.info("Asserting Text");
+        String actualText=text(type,locator);
+        assertEquals(expectedText,actualText,"Expected string "+expectedText+"does not match actual string "+actualText );
+    }
+
+    protected void simpleAssertEquals(String actualText, String expectedText) {
+        log.info("Asserting Equlas");
+        assertEquals(expectedText,actualText,"Expected string "+expectedText+"does not match actual string "+actualText );
+    }
+
+    protected void assertCSSProperty(String type,String locator,String property,String expectedText) {
+        log.info("Asserting css property");
+        String actualText=getCSSValues(type,locator,property);
+        log.info("Css property "+property+" is: "+actualText);
+        assertEquals(expectedText,actualText,"Expected string "+expectedText+"does not match actual string "+actualText );
+    }
+
+    protected void assertAttributePorperty(String type,String locator,String property,String expectedText) {
+        log.info("Asserting css property");
+        String actualText=getAttributeProperty(type,locator,property);
+        assertEquals(expectedText,actualText,"Expected string "+expectedText+"does not match actual string "+actualText );
+    }
+
+    protected void waitByPolling(Function f)
+    {
+
+        Wait wait = new FluentWait(this.driver)
+                .withTimeout(300, TimeUnit.SECONDS)
+                .pollingEvery(10, TimeUnit.SECONDS)
+                .ignoring(Exception.class);
+        WebElement foo= (WebElement) wait.until((com.google.common.base.Function) f);
+    }
+
+
 }
