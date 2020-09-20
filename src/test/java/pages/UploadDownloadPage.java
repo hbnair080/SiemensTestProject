@@ -82,7 +82,7 @@ public class UploadDownloadPage extends Services {
 
     @Step("Click on Download")
     public UploadDownloadPage clickOnDownload() throws InterruptedException {
-        click("xpath",xpathDownloadButton);
+        jsClick("xpath",xpathDownloadButton);
         return this;
     }
 
