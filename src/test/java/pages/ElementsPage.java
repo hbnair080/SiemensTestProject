@@ -22,8 +22,9 @@ public class ElementsPage extends Services {
         return new WebElementPage(driver);
     }
 
-    public UploadDownloadPage clickOnUploadDownloadMenu(){
-        scrollElementIntoView("xpath",xpathWebElementMenu);
+    public UploadDownloadPage clickOnUploadDownloadMenu() throws InterruptedException {
+        scrollElementIntoView("xpath",xpathUploadDownloadMenu);
+        Thread.sleep(1000);
         click("xpath",xpathUploadDownloadMenu);
         return new UploadDownloadPage(driver);
     }

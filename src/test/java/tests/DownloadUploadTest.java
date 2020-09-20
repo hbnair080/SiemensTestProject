@@ -6,8 +6,7 @@ import org.testng.annotations.Test;
 public class DownloadUploadTest extends BaseTest {
 
     @Test
-    public void verifyDownloadUploadPage()
-    {
+    public void verifyDownloadUploadPage() throws InterruptedException {
         homepage
                 .clickOnElementCard()
                 .clickOnUploadDownloadMenu()

@@ -48,6 +48,7 @@ public class UploadDownloadPage extends Services {
 
     @Step("Click on Select")
     public UploadDownloadPage clickOnSelect() throws InterruptedException {
+        Thread.sleep(1000);
         jsClick("xpath",xpathUploadButton);
         return this;
     }
