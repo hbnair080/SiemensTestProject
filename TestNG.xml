@@ -16,4 +16,9 @@
             <class name="tests.DownloadUploadTest"/>
         </classes>
     </test>
+    <test name="ProgressBarTest">
+        <classes>
+            <class name="tests.WebElementPageTest"/>
+        </classes>
+    </test>
 </suite>
