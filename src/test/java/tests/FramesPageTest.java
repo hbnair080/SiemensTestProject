@@ -4,12 +4,22 @@ import org.testng.annotations.Test;
 
 public class FramesPageTest extends BaseTest {
 
-    @Test
-    public void verifyParenFrameText() throws InterruptedException {
+
+    public void verifyParentFrameText() throws InterruptedException {
         homepage
                 .clickOnAlertsCard()
                 .clickOnNestedFrametMenu()
                 .switchToFrameOne()
-                .verifyFrameText();
+                .verifyFrameText("Parent frame");
+    }
+
+    @Test
+    public void verifyChildFrameText() throws InterruptedException {
+        homepage
+                .clickOnAlertsCard()
+                .clickOnNestedFrametMenu()
+                .switchToFrameOne()
+                .switchToFrameTwo()
+                .verifyFrameText("Child Iframe");
     }
 }

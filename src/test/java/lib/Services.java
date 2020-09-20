@@ -68,7 +68,7 @@ public class Services {
          driver.switchTo().frame(driver.findElement(this.findElementByType(type,locator)));
     }
 
-    public void switchMainContent(String type,String locator) {
+    public void switchMainContent() {
         driver.switchTo().defaultContent();
     }
 
