@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriver;
 import utils.Log;
 import lib.Services;
 
-import static org.testng.Assert.assertEquals;
-
 public class HomePage extends Services {
 
     private Log logger= new Log();
@@ -16,6 +14,8 @@ public class HomePage extends Services {
     private String xpathBannerLink ="//*[@id='app']//div[@class='home-banner']//a";
     private String xpathCatogryCardParent ="//*[@id='app']//div[@class='category-cards']";
     private String xpathCatogryCardElement="//*[@id='app']//div[@class='category-cards']//div[@class='card mt-4 top-card'][1]";
+    private String xpathCatogryCardWideget="//*[@id='app']//div[@class='category-cards']//div[@class='card mt-4 top-card'][4]";
+    private String xpathCatogryCardAlerts="//*[@id='app']//div[@class='category-cards']//div[@class='card mt-4 top-card'][3]";
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -46,11 +46,20 @@ public class HomePage extends Services {
 
     @Step("Click on  widgets card")
     public WidgetsPage clickOnWidgetsCard(){
-        scrollElementIntoView("xpath",xpathCatogryCardElement);
+        scrollElementIntoView("xpath",xpathCatogryCardWideget);
         logger.info("Click on  widgets card ");
-        click("xpath",xpathCatogryCardElement);
+        click("xpath",xpathCatogryCardWideget);
         return new WidgetsPage(this.driver);
     }
+
+    @Step("Click on  Alerts card")
+    public AlertsWindowsFramesPage clickOnAlertsCard(){
+        scrollElementIntoView("xpath",xpathCatogryCardAlerts);
+        logger.info("Click on  Alerts card ");
+        click("xpath",xpathCatogryCardAlerts);
+        return new AlertsWindowsFramesPage(this.driver);
+    }
+
 
 
 

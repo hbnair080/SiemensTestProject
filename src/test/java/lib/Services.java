@@ -60,16 +60,16 @@ public class Services {
        return driver.findElement(this.findElementByType(type,locator)).getText();
     }
 
-
     protected void typeData(String type,String locator, String text) {
         driver.findElement(this.findElementByType(type,locator)).sendKeys(text);
     }
 
+    public void switchFrames(String type,String locator) {
+         driver.switchTo().frame(driver.findElement(this.findElementByType(type,locator)));
+    }
 
-
-    //Java8 way - by same method we can pass all types of locators.
-    protected void type(Function<String, By> locate, String locator, String text) {
-        driver.findElement(locate.apply(locator)).sendKeys(text);
+    public void switchMainContent(String type,String locator) {
+        driver.switchTo().defaultContent();
     }
 
     protected void assertElementPresent(String type,String locator) {
@@ -154,7 +154,7 @@ public class Services {
 
     protected void assertText(String type,String locator, String expectedText) {
         log.info("Asserting Text");
-        String actualText=text(type,locator);
+        String actualText=text(type,locator).trim();
         assertEquals(expectedText,actualText,"Expected string "+expectedText+"does not match actual string "+actualText );
     }
 
