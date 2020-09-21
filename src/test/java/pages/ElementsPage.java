@@ -10,6 +10,7 @@ public class ElementsPage extends Services {
     private Log logger= new Log();
     private String xpathWebElementMenu ="//span[text()=\"Web Tables\"]";
     private String xpathUploadDownloadMenu ="//span[text()=\"Upload and Download\"]";
+    private String xpathCheckBoxMenu ="//span[text()=\"Check Box\"]";
 
     public ElementsPage(WebDriver driver) {
         super(driver);
@@ -30,6 +31,14 @@ public class ElementsPage extends Services {
         Thread.sleep(1000);
         click("xpath",xpathUploadDownloadMenu);
         return new UploadDownloadPage(driver);
+    }
+
+    @Step("Click on download menu item")
+    public CheckBoxPage clickOnCheckBoxMenu() {
+        logger.info("Click on Check Box menu item");
+        scrollElementIntoView("xpath",xpathCheckBoxMenu);
+        click("xpath",xpathCheckBoxMenu);
+        return new CheckBoxPage(driver);
     }
 
 
