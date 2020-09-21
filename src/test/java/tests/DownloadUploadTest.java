@@ -39,7 +39,7 @@ public class DownloadUploadTest extends BaseTest {
                 .clickOpenInUploadPopUP()
                 .verifyFilePresentAfterUpload("UploadTest.txt")
                 .clickOnDownload()
-                .verifyDownload("sampleFile");
+                .verifyDownload("sampleFile.jpeg");
 
     }
 
