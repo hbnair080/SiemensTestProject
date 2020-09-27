@@ -28,6 +28,12 @@ jobs:
     - name: Create Allure Report
       if: ${{ always() }}
       run: allure generate -c ./allure-results -o ./allure-reports
+    - name: Upload Allure Raw Results
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2.1.4
+      with:
+        name: Allure Raw Results
+        path: ./allure-results
     - name: Upload Allure Test Result
       if: ${{ always() }}
       uses: actions/upload-artifact@v2.1.4
