@@ -36,4 +36,9 @@
             <class name="tests.AlertPageTest"/>
         </classes>
     </test>
+    <test name="CheckBoxTest">
+        <classes>
+            <class name="tests.CheckBoxTest"/>
+        </classes>
+    </test>
 </suite>

@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import utils.Log;
 
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
@@ -44,13 +45,24 @@ public class Services {
         return (element);
     }
 
-    public void waitForElement(String type,String locator) {
-        new WebDriverWait(driver, 20).until(ExpectedConditions.presenceOfElementLocated(this.findElementByType(type,locator)));
+    public WebElement waitForElement(String type,String locator) {
+        return new WebDriverWait(driver, 20).until(ExpectedConditions.presenceOfElementLocated(this.findElementByType(type,locator)));
     }
 
-    public void waitForElements(String type,String locator) {
-        new WebDriverWait(driver, 20).until(ExpectedConditions.presenceOfAllElementsLocatedBy(this.findElementByType(type,locator)));
+    public List<WebElement> waitForElements(String type, String locator) {
+        return new WebDriverWait(driver, 40).until(ExpectedConditions.presenceOfAllElementsLocatedBy(this.findElementByType(type,locator)));
     }
+
+    public List<WebElement> waitForElementsVisible(String type, String locator) {
+        return new WebDriverWait(driver, 40).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(this.findElementByType(type,locator)));
+    }
+
+    public WebElement findElementByParent(WebElement element, String type, String locator)
+    {
+        return new WebDriverWait(driver, 20).until(ExpectedConditions.presenceOfElementLocated(this.findElementByType(type,locator)));
+        //return element.findElement(this.findElementByType(type,locator));
+    }
+
 
     public Alert waitForAlert() {
        return new WebDriverWait(driver, 20).until(ExpectedConditions.alertIsPresent());
@@ -77,8 +89,7 @@ public class Services {
     }
 
 
-    public void click(String type,String locator) {
-        driver.findElement(this.findElementByType(type,locator)).click();
+    public void click(String type,String locator) { this.waitForElement(type,locator).click();
     }
 
     public String text(String type,String locator) {
@@ -205,6 +216,11 @@ public class Services {
         return element.getAttribute(attribute);
     }
 
+    protected String getAttributeProperty(WebElement element,String attribute)
+    {
+        return element.getAttribute(attribute);
+    }
+
     protected void assertText(String type,String locator, String expectedText) {
         log.info("Asserting Text");
         String actualText=text(type,locator).trim();
@@ -212,6 +228,11 @@ public class Services {
     }
 
     protected void simpleAssertEquals(String actualText, String expectedText) {
+        log.info("Asserting Equlas");
+        Assert.assertEquals(expectedText,actualText,"Expected string "+expectedText+"does not match actual string "+actualText );
+    }
+
+    protected void simpleAssertEquals(int actualText, int expectedText) {
         log.info("Asserting Equlas");
         Assert.assertEquals(expectedText,actualText,"Expected string "+expectedText+"does not match actual string "+actualText );
     }
