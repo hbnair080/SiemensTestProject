@@ -1,10 +1,7 @@
 package lib;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
 import utils.Log;
 
@@ -47,6 +44,13 @@ public class Services {
 
     public WebElement waitForElement(String type,String locator) {
         return new WebDriverWait(driver, 20).until(ExpectedConditions.presenceOfElementLocated(this.findElementByType(type,locator)));
+    }
+
+    public void selectByVisibleText(String type,String locator, String text)
+    {
+        Select s= new Select(driver.findElement(this.findElementByType(type,locator)));
+        s.selectByVisibleText(text);
+
     }
 
     public List<WebElement> waitForElements(String type, String locator) {
@@ -202,7 +206,7 @@ public class Services {
 
     protected void jsClick(String type, String locator)
     {
-        WebElement element= driver.findElement(this.findElementByType(type,locator));
+        WebElement element= this.waitForElement(type,locator);
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
     }
 

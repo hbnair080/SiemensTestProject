@@ -41,4 +41,9 @@
             <class name="tests.CheckBoxTest"/>
         </classes>
     </test>
+    <test name="DatePickerTest">
+        <classes>
+            <class name="tests.DatePickerTest"/>
+        </classes>
+    </test>
 </suite>
