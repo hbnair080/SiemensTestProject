@@ -201,10 +201,11 @@ public class DatePickerPage extends Services {
     public String getDateTimefroamt(String year,String date,String month,String time)
     {
         String [] list=time.split(":");
+        int new_time= ((Integer.parseInt(list[0]) + 11) % 12 + 1);
         if(Integer.parseInt(list[0])<12)
-            time=time+" AM";
+            time=new_time+":"+list[1]+" AM";
         else
-            time=time+" PM";
+            time=new_time+":"+list[1]+" PM";
         return month+" "+date+", "+year+" "+time;
     }
 

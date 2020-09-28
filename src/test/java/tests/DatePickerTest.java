@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 public class DatePickerTest extends BaseTest  {
 
-    @Test
+    //@Test
     public void verifyDatePickerPage() {
         homepage
                 .clickOnWidgetsCard()
@@ -16,7 +16,7 @@ public class DatePickerTest extends BaseTest  {
 
     }
 
-    @Test(dataProvider = "datePickerValues")
+    //@Test(dataProvider = "datePickerValues")
     public void verifySelectionOFDatePicker(String year,String month,String date) {
         homepage
                 .clickOnWidgetsCard()
@@ -31,7 +31,7 @@ public class DatePickerTest extends BaseTest  {
 
     }
 
-    @Test
+    //@Test
     public void verifyDateTimePickerPage() {
         homepage
                 .clickOnWidgetsCard()
@@ -67,6 +67,6 @@ public class DatePickerTest extends BaseTest  {
 
     @DataProvider
     public static Object[][] timePickerValues() {
-        return new Object[][]{{"2021","December","21","00:00"},{"2025","January","10","12:30"},{"2019","June","15","3:45"},{"2022","April","15","21:30"},{"2023","October","9","23:00"}};
+        return new Object[][]{{"2021","December","21","00:00"},{"2025","January","10","12:30"},{"2019","June","15","03:45"},{"2022","April","15","21:30"},{"2023","October","9","23:00"}};
     }
 }
