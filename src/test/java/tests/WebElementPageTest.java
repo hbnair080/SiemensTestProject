@@ -5,7 +5,6 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import utils.Listeners.TestListener;
 
-@Listeners({ TestListener.class })
 public class WebElementPageTest extends BaseTest {
 
     @Test
